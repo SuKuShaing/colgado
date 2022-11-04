@@ -20,7 +20,7 @@ _█████╗ ██████╗ ██╗ ██████╗ ██
 """
 
 respuesta_positiva = ['yes', 'YES', 'y', 'Y' , 'si', 'SI', 'sí', 'SÍ', 's', 'S']
-
+mensaje_salir = ['Salir', 'SALIR', 'salir', 'Exit', 'EXIT', 'exit']
 
 
 
@@ -97,4 +97,6 @@ print(type(dic.get("C"))) #None | <class 'NoneType'>
 
 os.system ("clear") #Unix 
 os.system ("cls") #Windows
+
+# print(list(enumerate(p.respuesta_positiva))) #[(0, 'yes'), (1, 'YES'), (2, 'y'), (3, 'Y'), (4, 'si'), (5, 'SI'), (6, 'sí'), (7, 'SÍ'), (8, 's'), (9, 'S')]
 """
