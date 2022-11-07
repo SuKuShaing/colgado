@@ -1,5 +1,6 @@
 import pantallas as p
 import os
+import random
 
 def verificar_texto(texto):
     if len(texto) > 0:
@@ -21,7 +22,15 @@ def leer_archivo():
     with open("./palabras.txt", "r", encoding="utf-8") as f:
         for line in f:
             palabras.append(line[:-1])
+    return palabras
     # print(palabras, len(palabras)) # 171 palabras
+
+
+def seleccionar_palabra_del_desafio():
+    lista_de_palabras = leer_archivo()
+    palabra_seleccionada = random.choice(lista_de_palabras)
+    return palabra_seleccionada
+    # print(palabra_seleccionada, len(palabra_seleccionada))
 
 
 def run():
@@ -42,13 +51,28 @@ def run():
             nombre_valido = verificar_texto(nombre_del_jugador)
         print(f'"{nombre_del_jugador}" es un nombre valido')
 
-        # while True:
+        #Selección de la palabra
+        palabra_oculta = seleccionar_palabra_del_desafio()
+        cantidad_caracteres = len(palabra_oculta)
+        # print(palabra_oculta, cantidad_caracteres)
+
+        # while del juego:
         texto_completo = False
         while texto_completo == False:
-            pass
-            leer_archivo()
-            break
+            os.system("cls")
+            print(f'{nombre_del_jugador}, Tu palabra a encontrar tiene {cantidad_caracteres} caracteres:')
+            print(f'Tienes X intentos')
+
+            # print('')
+            # print(Aquí debe ir el monito que se quema)
+            # print('')
+
+            print('')
+            print('_'*cantidad_caracteres) #AQUÍ SE DEBE ACTUALIZAR SEGÚN LAS LETRAS INGRESADAS 
+            print('')
+
             # ingrese texto
+            caracter_entrante = input('Ingresa una letra: ')
             # Sí palabra completa es igual a la solicitada
                 #pantalla GANASTE
             # si, limite de intentos superado
@@ -57,24 +81,22 @@ def run():
     # os.system("cls")
     # print(p.mensaja_de_adios)
 
-    
-
     #Cargar palabra de la lista de facundo
     #Input de letras
     #Verificar que sea un carácter valido
     #Contar intentos
     #pantalla de Ganaste o Perdiste
-    pass
+
 
 if __name__ == '__main__':
     run()
-    # leer_archivo()
-
 
 
 """
 Quede en:
-- Hay que cargar la palabra, 
-- que la persona
-- hacer la lógica para ganar o perder 
+✔ Hay que cargar la palabra
+- Hacer la validación de que el carácter ingresado sea valido
+- Sí el carácter es correcto que se muestre en linea que oculta la palabra
+- Hacer la pantalla del juego
+- Hacer la lógica para ganar o perder 
 """
