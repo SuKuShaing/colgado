@@ -2,9 +2,8 @@ import pantallas as p
 import os
 import random
 
-def verificar_texto(texto):
+def verificar_longitud_texto(texto):
     if len(texto) > 0:
-        # print(texto, len(texto), type(len(texto)))
         return True
     else:
         print("Ingrese un nombre")
@@ -23,14 +22,13 @@ def leer_archivo():
         for line in f:
             palabras.append(line[:-1])
     return palabras
-    # print(palabras, len(palabras)) # 171 palabras
 
 
 def seleccionar_palabra_del_desafio():
     lista_de_palabras = leer_archivo()
     palabra_seleccionada = random.choice(lista_de_palabras)
     return palabra_seleccionada
-    # print(palabra_seleccionada, len(palabra_seleccionada))
+    # return 'validación' #pruebas para el acento
 
 
 def run():
@@ -48,12 +46,16 @@ def run():
         nombre_valido = False
         while nombre_valido == False:
             nombre_del_jugador = input("Escribe tu nombre: ")
-            nombre_valido = verificar_texto(nombre_del_jugador)
+            nombre_valido = verificar_longitud_texto(nombre_del_jugador)
         print(f'"{nombre_del_jugador}" es un nombre valido')
 
         #Selección de la palabra
         palabra_oculta = seleccionar_palabra_del_desafio()
         cantidad_caracteres = len(palabra_oculta)
+        respuesta_jugador = []
+        for i in range(cantidad_caracteres):
+            respuesta_jugador.append('_')
+
         # print(palabra_oculta, cantidad_caracteres)
 
         # while del juego:
@@ -67,12 +69,26 @@ def run():
             # print(Aquí debe ir el monito que se quema)
             # print('')
 
+            #Linea punteada donde se muestra la respuesta del usuario
             print('')
-            print('_'*cantidad_caracteres) #AQUÍ SE DEBE ACTUALIZAR SEGÚN LAS LETRAS INGRESADAS 
+            mostrar_respuesta_jugador = "".join(respuesta_jugador)
+            print(mostrar_respuesta_jugador)
             print('')
 
             # ingrese texto
             caracter_entrante = input('Ingresa una letra: ')
+
+            indice = 0
+            for letra_oculta in palabra_oculta:
+                #colocar aquí la lógica del asunto del acento
+
+                if caracter_entrante == letra_oculta:
+                    respuesta_jugador[indice] = letra_oculta
+
+                indice += 1
+
+
+
             # Sí palabra completa es igual a la solicitada
                 #pantalla GANASTE
             # si, limite de intentos superado
@@ -95,8 +111,9 @@ if __name__ == '__main__':
 """
 Quede en:
 ✔ Hay que cargar la palabra
-- Hacer la validación de que el carácter ingresado sea valido
-- Sí el carácter es correcto que se muestre en linea que oculta la palabra
-- Hacer la pantalla del juego
+✔ Hacer la validación de que el carácter ingresado sea valido - no es necesario, puesto que el usuario debe velar por ingresar caracteres validos
+✔ Sí el carácter es correcto que se muestre en linea que oculta la palabra
+- Verificar que solo ingrese un carácter por vez
+- Colocar la lógica de la validación de la letra aunque tenga acento del acento
 - Hacer la lógica para ganar o perder 
 """

@@ -99,4 +99,6 @@ os.system ("clear") #Unix
 os.system ("cls") #Windows
 
 # print(list(enumerate(p.respuesta_positiva))) #[(0, 'yes'), (1, 'YES'), (2, 'y'), (3, 'Y'), (4, 'si'), (5, 'SI'), (6, 'sí'), (7, 'SÍ'), (8, 's'), (9, 'S')]
+
+Strings are immutable in Python!!!!!!!!!!!!!!!!!!!!!!!!
 """
