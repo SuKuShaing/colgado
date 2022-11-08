@@ -21,6 +21,8 @@ _█████╗ ██████╗ ██╗ ██████╗ ██
 
 respuesta_positiva = ['yes', 'YES', 'y', 'Y' , 'si', 'SI', 'sí', 'SÍ', 's', 'S']
 mensaje_salir = ['Salir', 'SALIR', 'salir', 'Exit', 'EXIT', 'exit']
+caracteres_acentuados =['á', 'é', 'í', 'ó', 'ú', 'ü']
+caracteres_no_acentuados =['a', 'e', 'i', 'o', 'u', 'u']
 
 
 
@@ -83,7 +85,9 @@ def sacar_acentos(s): # Remueve los acentos de una frase
         ("ú", "u"),
     )
     for a, b in reemplazos:
-        s = s.replace(a, b).replace(a.upper(), b.upper())
+      print( a , b)
+
+      s = s.replace(a, b).replace(a.upper(), b.upper())
     return s
 
 
