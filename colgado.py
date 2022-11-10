@@ -70,11 +70,15 @@ def run():
             #Linea punteada donde se muestra la respuesta del usuario
             print('')
             mostrar_respuesta_jugador = "".join(respuesta_jugador)
-            print(mostrar_respuesta_jugador)
+            print(mostrar_respuesta_jugador, type(mostrar_respuesta_jugador))
             print('')
 
             # ingrese texto
             caracter_entrante = input('Ingresa una letra: ')
+
+            #Verificación sí está completa la palabra
+            if mostrar_respuesta_jugador == palabra_oculta:
+                texto_completo 
 
             # Validación de la palabra, sí es correcta se coloca en el array de respuesta del jugador
             indice = 0
@@ -83,10 +87,8 @@ def run():
                 # Solo entraría aquí si la letra a testear tiene acento o diéresis
                 acento = -1
                 if letra_oculta in p.caracteres_acentuados:
-                    print(p.caracteres_acentuados.index(letra_oculta))
                     acento = p.caracteres_acentuados.index(letra_oculta)
                     letra_oculta = p.caracteres_no_acentuados[p.caracteres_acentuados.index(letra_oculta)]
-                    print('acento: ', acento)
 
                 # Verifica que la letra ingresada coincida con alguna del array oculto
                 if caracter_entrante == letra_oculta:
