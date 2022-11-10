@@ -33,7 +33,7 @@ def seleccionar_palabra_del_desafio():
 
 def run():
     #Bienvenida al juego
-    os.system ("cls")
+    os.system("cls")
     print(p.mensaja_de_bienvenida)
 
     #Deseas jugar?
@@ -70,20 +70,20 @@ def run():
             #Linea punteada donde se muestra la respuesta del usuario
             print('')
             mostrar_respuesta_jugador = "".join(respuesta_jugador)
-            print(mostrar_respuesta_jugador, type(mostrar_respuesta_jugador))
+            print(mostrar_respuesta_jugador)
             print('')
+
+            #Verificación sí está completa la palabra
+            if mostrar_respuesta_jugador == palabra_oculta:
+                texto_completo = True
+                break
 
             # ingrese texto
             caracter_entrante = input('Ingresa una letra: ')
 
-            #Verificación sí está completa la palabra
-            if mostrar_respuesta_jugador == palabra_oculta:
-                texto_completo 
-
             # Validación de la palabra, sí es correcta se coloca en el array de respuesta del jugador
             indice = 0
             for letra_oculta in palabra_oculta:
-                
                 # Solo entraría aquí si la letra a testear tiene acento o diéresis
                 acento = -1
                 if letra_oculta in p.caracteres_acentuados:
@@ -100,20 +100,21 @@ def run():
 
                 indice += 1
 
+        #solo sí gano y le quedan intentos motrar ganaste
+        if texto_completo:
+            os.system("cls")
+            print(p.mensaje_de_ganaste)
+            print('Has salvado tu alma y la vida de tu personaje')
+            print('')
+            print(f'Tu palabra era: " {palabra_oculta} "')
+            print(f'y tus intentos fallidos restantes son X, felicitaciones')
 
-            # Sí palabra completa es igual a la solicitada
-                #pantalla GANASTE
             # si, limite de intentos superado
                 #Pantalla Perdiste
 
-    # os.system("cls")
-    # print(p.mensaja_de_adios)
-
-    #Cargar palabra de la lista de facundo
-    #Input de letras
-    #Verificar que sea un carácter valido
-    #Contar intentos
-    #pantalla de Ganaste o Perdiste
+    else:
+        os.system("cls")
+        print(p.mensaja_de_adios)
 
 
 if __name__ == '__main__':
@@ -127,6 +128,6 @@ Quede en:
 ✔ Sí el carácter es correcto que se muestre en linea que oculta la palabra
 ✔ Verificar que solo ingrese un carácter por vez - ¿por qué? debería dejarme introducir varias palabras a la vez
 ✔ Colocar la lógica de la validación de la letra aunque tenga acento del acento
-- Hacer la lógica para ganar 
+✔ Hacer la lógica para ganar 
 - Hacer la lógica para perder 
 """
