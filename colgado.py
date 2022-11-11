@@ -1,6 +1,8 @@
 import pantallas as p
 import os
+import math
 import random
+import time
 
 def verificar_longitud_texto(texto):
     if len(texto) > 0:
@@ -10,10 +12,11 @@ def verificar_longitud_texto(texto):
         return False
 
 
-def texto_salir(texto):
-    if texto == p.mensaje_salir:
-        os.system("cls")
-        print(p.mensaja_de_adios)
+def verificar_dificultad(dificultad):
+    if dificultad in p.niveles_de_dificultad:
+        return True
+    else:
+        return False
 
 
 def leer_archivo():
@@ -47,7 +50,6 @@ def run():
         while nombre_valido == False:
             nombre_del_jugador = input("Escribe tu nombre: ")
             nombre_valido = verificar_longitud_texto(nombre_del_jugador)
-        print(f'"{nombre_del_jugador}" es un nombre valido')
 
         #Selección de la palabra
         palabra_oculta = seleccionar_palabra_del_desafio()
@@ -56,19 +58,31 @@ def run():
         for i in range(cantidad_caracteres):
             respuesta_jugador.append('_')
 
+        #Dificultad
+        dificultad_valida = False
+        while dificultad_valida == False:
+            try:
+                os.system("cls")
+                print(p.dificultad)
+                dificultad = int(input("Solo coloque el número de la dificultad: "))
+                dificultad_valida = verificar_dificultad(dificultad)
+            except ValueError:
+                print('¡¡ Debes ingresar un NÚMERO !!')
+                time.sleep(2.5)
+
         # while del juego:
+        intentos = cantidad_caracteres*dificultad
         texto_completo = False
-        while texto_completo == False:
+        while intentos > -1:
             os.system("cls")
             print(f'{nombre_del_jugador}, Tu palabra a encontrar tiene {cantidad_caracteres} caracteres:')
-            print(f'Tienes X intentos')
+            print('Usa caracteres en minúscula')
+            print(f'Tienes {intentos} intentos fallidos')
 
-            # print('')
-            # print(Aquí debe ir el monito que se quema)
-            # print('')
+            #Personaje quemandose
+            print(p.persona_congada[math.trunc(10*(intentos/(cantidad_caracteres*dificultad)))])
 
             #Linea punteada donde se muestra la respuesta del usuario
-            print('')
             mostrar_respuesta_jugador = "".join(respuesta_jugador)
             print(mostrar_respuesta_jugador)
             print('')
@@ -99,18 +113,19 @@ def run():
                         respuesta_jugador[indice] = letra_oculta
 
                 indice += 1
+            
+            intentos -= 1
 
-        #solo sí gano y le quedan intentos motrar ganaste
+        #Ganar o perder
         if texto_completo:
             os.system("cls")
             print(p.mensaje_de_ganaste)
             print('Has salvado tu alma y la vida de tu personaje')
             print('')
             print(f'Tu palabra era: " {palabra_oculta} "')
-            print(f'y tus intentos fallidos restantes son X, felicitaciones')
-
-            # si, limite de intentos superado
-                #Pantalla Perdiste
+            print(f'y tus intentos restantes son {intentos}, felicitaciones')
+        else:
+            print(p.mensaje_de_perder)
 
     else:
         os.system("cls")
@@ -119,6 +134,15 @@ def run():
 
 if __name__ == '__main__':
     run()
+    # print(p.persona_congada[math.trunc(10*(15/15))])
+    # print(math.trunc(10*(15/15)))
+    # print(math.trunc(10*(13/15)))
+    # print(math.trunc(10*(10/15)))
+    # print(math.trunc(10*(8/15)))
+    # print(math.trunc(10*(5/15)))
+    # print(math.trunc(10*(3/15)))
+    # print(math.trunc(10*(1/15)))
+    # print(math.trunc(10*(0/15)))
 
 
 """
@@ -129,5 +153,6 @@ Quede en:
 ✔ Verificar que solo ingrese un carácter por vez - ¿por qué? debería dejarme introducir varias palabras a la vez
 ✔ Colocar la lógica de la validación de la letra aunque tenga acento del acento
 ✔ Hacer la lógica para ganar 
-- Hacer la lógica para perder 
+✔ Hacer la lógica para perder 
+- Animación del personaje
 """
