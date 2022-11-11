@@ -134,16 +134,6 @@ def run():
 
 if __name__ == '__main__':
     run()
-    # print(p.persona_congada[math.trunc(10*(15/15))])
-    # print(math.trunc(10*(15/15)))
-    # print(math.trunc(10*(13/15)))
-    # print(math.trunc(10*(10/15)))
-    # print(math.trunc(10*(8/15)))
-    # print(math.trunc(10*(5/15)))
-    # print(math.trunc(10*(3/15)))
-    # print(math.trunc(10*(1/15)))
-    # print(math.trunc(10*(0/15)))
-
 
 """
 Quede en:
@@ -154,5 +144,5 @@ Quede en:
 ✔ Colocar la lógica de la validación de la letra aunque tenga acento del acento
 ✔ Hacer la lógica para ganar 
 ✔ Hacer la lógica para perder 
-- Animación del personaje
+✔ Animación del personaje
 """
