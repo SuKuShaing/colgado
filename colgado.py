@@ -77,7 +77,7 @@ def run():
             os.system("cls")
             print(f'{nombre_del_jugador}, Tu palabra a encontrar tiene {cantidad_caracteres} caracteres:')
             print('Usa caracteres en minúscula')
-            print(f'Tienes {intentos} intentos fallidos')
+            print(f'Tienes {intentos} intentos')
 
             #Personaje quemandose
             print(p.persona_congada[math.trunc(10*(intentos/(cantidad_caracteres*dificultad)))])
@@ -125,6 +125,7 @@ def run():
             print(f'Tu palabra era: " {palabra_oculta} "')
             print(f'y tus intentos restantes son {intentos}, felicitaciones')
         else:
+            os.system("cls")
             print(p.mensaje_de_perder)
 
     else:
