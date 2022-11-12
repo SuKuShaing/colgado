@@ -35,7 +35,6 @@ mensaje_de_perder = """
 ██╔═══╝ ██╔══╝  ██╔══██╗██║  ██║██║╚════██║   ██║   ██╔══╝  
 ██║     ███████╗██║  ██║██████╔╝██║███████║   ██║   ███████╗
 ╚═╝     ╚══════╝╚═╝  ╚═╝╚═════╝ ╚═╝╚══════╝   ╚═╝   ╚══════╝
-Tu personaje ha muerto y tu alma será consumida
 """
 
 # pagina para generar las letras https://fsymbols.com/es/generadores/tarty/

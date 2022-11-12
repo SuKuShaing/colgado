@@ -120,13 +120,14 @@ def run():
         if texto_completo:
             os.system("cls")
             print(p.mensaje_de_ganaste)
-            print('Has salvado tu alma y la vida de tu personaje')
+            print(f'Felicidades {nombre_del_jugador}, has salvado tu alma y la vida de tu personaje')
             print('')
             print(f'Tu palabra era: " {palabra_oculta} "')
             print(f'y tus intentos restantes son {intentos}, felicitaciones')
         else:
             os.system("cls")
             print(p.mensaje_de_perder)
+            print(f'{nombre_del_jugador}, Tu personaje ha muerto y tu alma será consumida')
 
     else:
         os.system("cls")
